@@ -44,7 +44,9 @@ echo -n rake: ;
 echo `which rake`;
 echo -n bundle: ;
 echo `which bundle`;
+
 cd $WWW_ROOT;
+
 echo -n directory:  
 pwd;
 git checkout $BRANCH;
@@ -52,16 +54,19 @@ echo -n branch: ;
 git branch | fgrep '*' | cut -d \" \" -f 2;
 echo -n current git log SHA1: ;
 git log -n 1 | grep 'commit ' | cut -d \" \" -f 2;
+
 echo update code;
 echo start git pull...;
 git checkout .;
 git pull;
+
 echo bundle install...;
 bundle install --path $BUNDLE_GEMS_PATH --without development test --deployment;
 echo compiling assets...;
 bundle exec rails assets:precompile RAILS_ENV=$ENV;
 echo start migrate...;
 bundle exec rails db:migrate RAILS_ENV=$ENV;
+
 echo reload or start unicorn...;
 if [ -f tmp/pids/unicorn.pid ]; then
   echo reload unicorn...;
@@ -70,6 +75,7 @@ else
   echo start unicorn...;
   bundlle exec unicorn_rails -c config/unicorn.rb -E $ENV -D
 fi
+
 sleep 2;
 echo DONE!
 "

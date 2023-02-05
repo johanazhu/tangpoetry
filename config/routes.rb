@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'poetry/random'
+  get "/", to: "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   get 'poetry/title/:title', to: 'poetry#title'
@@ -13,5 +14,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   # resources :poetry, only:[:show]
-  root 'poetry#random'
+  # root 'poetry#random'
+
 end

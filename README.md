@@ -7,11 +7,9 @@
 ## 接口列表
 
 - 随机出现一首诗：/poetry/random
-
 - 用诗的题目查询：/poetry/title/静夜思
 - 列出这个诗人的所有诗：/poetry/author/李白
 - 列出这个诗人的这首诗：/poetry/author/张若虚/title/春江花月夜
-- 通过创作数量排名：/poet/list/createnum
 
 
 

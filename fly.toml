@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for tangpoetry on 2023-06-09T14:38:35+08:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "tangpoetry"
+primary_region = "hkg"
+console_command = "/rails/bin/rails console"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
+  
+#[deploy]
+  # 每次部署后执行数据迁移
+#  release_command = "bin/rails db:migrate"

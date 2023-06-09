@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: tangpoetry_dev1
+  database: tangpoetry_dev
   username: tangpoetry
   password: 123456
   host: localhost
@@ -31,9 +31,17 @@ test:
   <<: *default
   database: tangpoetry_1_test
 
+# 服务器部署的配置
+# production:
+#   <<: *default
+#   database: tangpoetry_production
+#   username: tangpoetry
+#   password: <%= ENV["DB_PASSWORD"] %>
+#   host: <%= ENV["DB_HOST"] %>
+# fly 部署的配置
 production:
   <<: *default
-  database: tangpoetry_production
-  username: tangpoetry
+  database: postgres
+  username: postgres
   password: <%= ENV["DB_PASSWORD"] %>
   host: <%= ENV["DB_HOST"] %>
